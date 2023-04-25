@@ -1,15 +1,26 @@
 using System;
 
-class Program {
-    static void Main(string[] args) {
+class Program 
+{
+    static void Main(string[] args)
+    {
         // Core Requirements
 
-        Console.Write("Enter your grade percentage: ");
+        Console.WriteLine("Enter your grade percentage: ");
         int grade = int.Parse(Console.ReadLine());
 
         string letter;
 
-        if (grade >= 90) {
+        while (grade > 100) {
+            Console.WriteLine("Grade cannot exceed 100");            
+            // if (grade > 100)
+            
+                Console.WriteLine("Enter your grade percentage: ");
+                grade = int.Parse(Console.ReadLine());
+            
+        }
+        
+            if (grade >= 90) {
             letter = "A";
         }
         else if (grade >= 80) {
@@ -24,6 +35,8 @@ class Program {
         else {
             letter = "F";
         }
+        
+        
 
         Console.WriteLine("Your letter grade is: " + letter);
 
@@ -62,8 +75,8 @@ class Program {
         else if (sign == "-") {
             letter += sign;
         }
-
         Console.WriteLine("Your final grade is: " + letter);
+        
     }
 }
 
