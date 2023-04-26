@@ -17,7 +17,7 @@ class Program
         int guess = Convert.ToInt32(Console.ReadLine());
         guessCount++;
 
-        // Console.Write("What is your guess? ");
+        //  Console.Write("What is your guess? ");
         // int guess = Convert.ToInt32(Console.ReadLine());
         // guessCount++;
 
