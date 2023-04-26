@@ -16,10 +16,8 @@ class Program
             // if (grade > 100)
             
                 Console.WriteLine("Enter your grade percentage: ");
-                grade = int.Parse(Console.ReadLine());
-            
+                grade = int.Parse(Console.ReadLine());            
         }
-        
             if (grade >= 90) {
             letter = "A";
         }
