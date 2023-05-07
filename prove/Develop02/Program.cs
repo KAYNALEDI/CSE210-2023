@@ -8,22 +8,15 @@ class Journal
 
     public void AddEntry()
     {
-        Console.Write("What brings you joy? ");
-        string prompt = Console.ReadLine();
+        Console.Write("Enter today's date (MM/DD/YYYY): ");
+        string date = Console.ReadLine();
 
-        Console.Write("Describe a place where you felt happiest. ");
+        Console.WriteLine(GetRandomPrompt());
+
+        Console.Write("Write your response: ");
         string response = Console.ReadLine();
 
-        Console.Write("What was your greatest fear, and how did you conquer it? ");
-        string response2 = Console.ReadLine();
-
-        Console.Write("List down a bucket list with the things that you have always wanted to do. ");
-        string response3 = Console.ReadLine();
-
-        Console.Write("Where do you see yourself in the next 1, 3, 5, 10 years from now? ");
-        string response4 = Console.ReadLine();
-
-        Entry newEntry = new Entry(prompt, response, response2, response3, response4);
+        Entry newEntry = new Entry(date, response);
         entries.Add(newEntry);
     }
 
@@ -54,33 +47,42 @@ class Journal
             while ((line = sr.ReadLine()) != null)
             {
                 string[] parts = line.Split(',');
-                Entry newEntry = new Entry(parts[0], parts[1], parts[2], parts[3], parts[4]);
+                Entry newEntry = new Entry(parts[0], parts[1]);
                 entries.Add(newEntry);
             }
         }
+    }
+
+    private string GetRandomPrompt()
+    {
+        string[] prompts = {
+            "What brings you joy?",
+            "Describe a place where you felt happiest.",
+            "What was your greatest fear, and how did you conquer it?",
+            "List down a bucket list with the things that you have always wanted to do.",
+            "Where do you see yourself in the next 1, 3, 5, 10 years from now?"
+        };
+
+        Random random = new Random();
+        int index = random.Next(prompts.Length);
+        return prompts[index];
     }
 }
 
 class Entry
 {
-    private string prompt;
+    private string date;
     private string response;
-    private string response2;
-    private string response3;
-    private string response4;
 
-    public Entry(string prompt, string response, string response2, string response3, string response4)
+    public Entry(string date, string response)
     {
-        this.prompt = prompt;
+        this.date = date;
         this.response = response;
-        this.response2 = response2;
-        this.response3 = response3;
-        this.response4 = response4;
     }
 
     public override string ToString()
     {
-        return $"{prompt}\n{response}\n{response2}\n{response3}\n{response4}\n";
+        return $"{date}\n{response}\n";
     }
 }
 
