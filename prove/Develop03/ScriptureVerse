@@ -1,0 +1,31 @@
+// using System;
+
+// class ScriptureVerse
+// {
+//     private string[] words;
+
+//     public ScriptureVerse(string text)
+//     {
+//         this.words = text.Split(' ');
+//     }
+
+//     public int GetWordCount()
+//     {
+//         return this.words.Length;
+//     }
+
+//     public void Display(bool[] hiddenWords)
+//     {
+//         for (int i = 0; i < this.words.Length; i++)
+//         {
+//             if (hiddenWords[i])
+//             {
+//                 Console.Write("____ ");
+//             }
+//             else
+//             {
+//                 Console.Write(this.words[i] + " ");
+//             }
+//         }
+//     }
+// }

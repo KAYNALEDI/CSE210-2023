@@ -1,0 +1,50 @@
+// using System;
+// using System.Collections.Generic;
+
+// class Scripture
+// {
+//     private string reference;
+//     private List<ScriptureVerse> verses;
+
+//     public Scripture(string reference, string text)
+//     {
+//         this.reference = reference;
+//         this.verses = new List<ScriptureVerse>();
+//         this.AddVerse(text);
+//     }
+
+//     public Scripture(string reference, string[] texts)
+//     {
+//         this.reference = reference;
+//         this.verses = new List<ScriptureVerse>();
+//         foreach (string text in texts)
+//         {
+//             this.AddVerse(text);
+//         }
+//     }
+
+//     public void AddVerse(string text)
+//     {
+//         this.verses.Add(new ScriptureVerse(text));
+//     }
+
+//     public int GetWordCount()
+//     {
+//         int count = 0;
+//         foreach (ScriptureVerse verse in this.verses)
+//         {
+//             count += verse.GetWordCount();
+//         }
+//         return count;
+//     }
+
+//     public void Display(bool[] hiddenWords)
+//     {
+//         Console.WriteLine(this.reference);
+//         foreach (ScriptureVerse verse in this.verses)
+//         {
+//             verse.Display(hiddenWords);
+//             Console.WriteLine();
+//         }
+//     }
+// }

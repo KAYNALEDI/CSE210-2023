@@ -1,0 +1,28 @@
+// using System;
+
+// class Word
+// {
+//     private string text;
+//     private bool hidden;
+
+//     public Word(string text)
+//     {
+//         this.text = text;
+//         this.hidden = false;
+//     }
+
+//     public bool IsHidden()
+//     {
+//         return this.hidden;
+//     }
+
+//     public void Hide()
+//     {
+//         this.hidden = true;
+//     }
+
+//     public string GetText()
+//     {
+//         return this.text;
+//     }
+// }
