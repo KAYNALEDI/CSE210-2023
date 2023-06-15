@@ -4,12 +4,20 @@ using System.Collections.Generic;
 class Program {
     static void Main(string[] args) {
         Scripture john3_16 = new Scripture(new ScriptureReference("John", 3, 16), "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.");
-        john3_16.HideWords();
 
-        while (!john3_16.IsFullyHidden()) {
-            Console.ReadLine();
+        Console.WriteLine("Press Enter to hide words or type 'quit' to exit.");
+        Console.WriteLine();
+
+        while (true) {
+            string input = Console.ReadLine();
+
+            if (input.ToLower() == "quit") {
+                break;
+            }
+
             Console.Clear();
             john3_16.HideWords();
+            Console.WriteLine();
         }
     }
 }
