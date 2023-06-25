@@ -1,22 +1,33 @@
 using System;
-
 using System.Threading;
+/*
+
+
+
+*** The listing activity is not working correctly. It cannot enter
+any items and then it says I have enter the same number of items 
+as the number of seconds entered ***
+
+*/
+
+
 
 public class Activity
 {
-    protected string name;
-    protected string description;
+    protected string _name;
+    protected string _description;
+    
 
-    public Activity(string name, string description)
+    public Activity(string _name, string _description)
     {
-        this.name = name;
-        this.description = description;
+        this._name = _name;
+        this._description = _description;
     }
 
     public virtual void Start(int duration)
     {
-        Console.WriteLine($"Starting {name} activity...");
-        Console.WriteLine(description);
+        Console.WriteLine($"Starting {_name} activity...");
+        Console.WriteLine(_description);
         Thread.Sleep(2000);
 
         Console.WriteLine("Prepare to begin...");
@@ -91,11 +102,24 @@ public class ReflectionActivity : Activity
         Console.WriteLine(prompt);
         Thread.Sleep(2000);
 
+        int x = duration;
+        string all = ".";
         foreach (string question in questions)
         {
-            Console.WriteLine(question);
-            Thread.Sleep(2000);
+            if (duration > 0)
+            {
+                Console.WriteLine(question);
+                Console.WriteLine(all);
+                // Console.WriteLine("Duration left : " + duration);
+                Thread.Sleep(1000);                
+                duration--;
+                all = all + ".";  
+            }     
         }
+        
+        
+
+
 
         base.End();
     }
@@ -132,9 +156,7 @@ public class ListingActivity : Activity
         Thread.Sleep(2000);
 
         base.End();
-   
-
- }
+    }
 }
 
 public class Program
@@ -145,12 +167,11 @@ public class Program
 
         while (true)
         {
-            Console.WriteLine("\nPlease select an activity:");
+            Console.WriteLine("/nPlease select an activity:");
             Console.WriteLine("1. Breathing Activity");
             Console.WriteLine("2. Reflection Activity");
             Console.WriteLine("3. Listing Activity");
             Console.WriteLine("4. Quit");
-
             Console.Write("Enter your choice: ");
             string choice = Console.ReadLine();
 
@@ -160,11 +181,21 @@ public class Program
                 break;
             }
 
-            Console.Write("Enter the duration (in seconds): ");
-            int duration = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter the duration (in seconds) : ");
+            int duration;
+            string _duration = Console.ReadLine();
+            if (_duration != "")
+            {
+                duration = Int32.Parse(_duration);
+            }
+            else
+            {
+                Console.WriteLine("Can only enter integers. Try again!!");
+                Thread.Sleep(2000);
+                break;
+            }
 
             Activity activity;
-
             switch (choice)
             {
                 case "1":
@@ -180,7 +211,6 @@ public class Program
                     Console.WriteLine("Invalid choice. Please try again.");
                     continue;
             }
-
             Console.Clear();
             activity.Start(duration);
         }
