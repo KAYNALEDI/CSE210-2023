@@ -1,0 +1,23 @@
+// Bonus reward class
+public class BonusReward
+{
+    private int milestone;
+    private int bonusPoints;
+    private string message;
+
+    public int Milestone { get => milestone; set => milestone = value; }
+    public int BonusPoints { get => bonusPoints; set => bonusPoints = value; }
+    public string Message { get => message; set => message = value; }
+
+    public BonusReward(int milestone, int bonusPoints, string message)
+    {
+        Milestone = milestone;
+        BonusPoints = bonusPoints;
+        Message = message;
+    }
+
+    public bool IsAchieved(int totalScore)
+    {
+        return totalScore >= Milestone;
+    }
+}
